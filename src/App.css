@@ -1,0 +1,89 @@
+.app {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.loading {
+  position: absolute;
+  display: block;
+  background-color: rgba(255,255,255,0.5);
+  height: 100%;
+  width: 100%;
+}
+
+.error-page {
+  position: absolute;
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+
+.error-page span {
+  display: inline-block;
+  margin: 15px 0 0 15px;
+}
+
+.error-page span p {
+  margin: 5px;
+}
+
+.list-element {
+  margin-left: auto;
+  margin-right: auto;
+  background:  grey;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+
+.img-text {
+  display: block;
+  text-align: center;
+  margin: 15px;
+}
+
+.lds-dual-ring {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 50%;
+  left: 50%;
+  margin-left: -32px;
+  margin-top: -32px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid lightblue;
+  border-color: lightblue transparent lightblue transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.material-icons {
+  display: inline-block;
+  font-size: 36px;
+}
+
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
