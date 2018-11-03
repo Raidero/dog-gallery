@@ -28,6 +28,6 @@ export abstract class RestHelper {
         method: 'flickr.photos.search',
         nojsoncallback: 1,
         page: pageNumber,
-        text: tag !== '' ? tag : 'faces'
+        text: tag !== '' ? tag : 'reddit'
     });
 }

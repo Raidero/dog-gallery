@@ -38,16 +38,30 @@ export class GalleryStore {
     }
 
     @action
-    public increaseImageWidth = () => {
-        this.imageWidth += 50;
-        this.clearPhotosAndReload();
+    public changeImageWidth = (changeInWidth: number) => {
+        const minWidth = 100;
+        const maxWidth = 1000;
+        if ( this.imageWidth + changeInWidth > minWidth && this.imageWidth + changeInWidth < maxWidth ) {
+            this.imageWidth += changeInWidth;
+            this.clearPhotosAndReload();   
+        }
     }
 
     @action
-    public changeTag(tag: string) {
-        this.tag = tag;
-        this.clearPhotosAndReload();
+    public prepareChangingTag(tag: string) {
+        if (this.isLoading === false) {
+            this.tag = tag;
+            setTimeout(() => this.changeTag(tag), 1000);
+        }
     }
+
+    public changeTag = (tag: string) => {
+        if (tag === this.tag) {
+            this.clearPhotosAndReload();
+        }
+    }
+
+
 
     public rowHeight = (index: number) => {
         if (this.images[index]) {

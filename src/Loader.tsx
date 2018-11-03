@@ -9,7 +9,7 @@ export const Loader = (props: IProps) =>  {
     return (
         <React.Fragment>
             {props.isLoading &&
-            <div className="loading">
+            <div className="loader">
                 <div className="lds-dual-ring" />
             </div>}
         </React.Fragment>

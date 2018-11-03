@@ -16,8 +16,6 @@ export class Gallery extends React.Component<IProps> {
     }
 
     public render() {
-        // tslint:disable-next-line:no-console
-        console.log('xdd')
         const store = this.props.store;
         if (store.error) {
             throw store.error;
@@ -25,13 +23,14 @@ export class Gallery extends React.Component<IProps> {
         return (
             <React.Fragment>
                 <div className="header">
-                    <input type="button" value="+" onClick={this.props.store.increaseImageWidth}/>
-                    <input type="text" onChange={this.changeTag}/>
+                    <input type="button" className="button" disabled={this.props.store.isLoading} value="-" onClick={this.props.store.changeImageWidth.bind(this, -50)}/>
+                    <input type="button" className="button" disabled={this.props.store.isLoading} value="+" onClick={this.props.store.changeImageWidth.bind(this, 50)}/>
+                    <input type="text" className="text" placeholder="Search tags..." readOnly={this.props.store.isLoading} onChange={this.changeTag}/>
                 </div>
-                <div className="gallery">
+                <div className="list">
                     <InfiniteLoader
                         isRowLoaded={this.isRowLoaded}
-                        loadMoreRows={this.props.store.loadMorePhotos}
+                        loadMoreRows={this.loadMoreRows}
                         rowCount={store.total}
                     >
                         {({ onRowsRendered, registerChild }) => (
@@ -50,15 +49,16 @@ export class Gallery extends React.Component<IProps> {
                             </AutoSizer>
                         )}
                     </InfiniteLoader>
-                    <Loader
-                        isLoading={store.isLoading}
-                    />
                 </div>
+                <Loader
+                        isLoading={store.isLoading}
+                />
             </React.Fragment>
         );
     }
+    private loadMoreRows = () => this.props.store.loadMorePhotos();
 
-    private changeTag = (event: React.ChangeEvent<HTMLInputElement>) => this.props.store.changeTag(event.currentTarget.value);
+    private changeTag = (event: React.ChangeEvent<HTMLInputElement>) => this.props.store.prepareChangingTag(event.currentTarget.value);
 
     private rowHeight = (params: Index) => this.props.store.rowHeight(params.index);
 

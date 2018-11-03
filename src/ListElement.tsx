@@ -20,13 +20,13 @@ export class ListElement extends React.Component<IProps> {
                     className="list-element" 
                     style={{width: this.props.galleryStore.imageWidth + standardMarigin }}
                 >
-                    <span className="img-text">{image.title}</span>
+                    <span className="title">{image.title}</span>
                     <img
                         src={image.url_z}
                         width={this.props.galleryStore.imageWidth}
                     />
-                    <span className="img-text">{'Author: ' + image.ownername}</span>
-                    <span className="img-text">{'Uploaded: ' + moment(Number(image.dateupload)*1000).format('Do MMMM YYYY, h:mm a')}</span>
+                    <span className="author">{'Author: ' + image.ownername}</span>
+                    <span className="uploaded">{'Uploaded: ' + moment(Number(image.dateupload)*1000).format('Do MMMM YYYY, h:mm a')}</span>
                 </div>
             </div> 
         );
